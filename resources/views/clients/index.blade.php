@@ -15,7 +15,12 @@ Client
     <div class="box-header with-border">
       <h3 class="box-title">List Of Clients</h3>
 
-      <div class="box-tools pull-right">
+<form class="form-inline mr-auto" action="search" method="POST">
+  @csrf
+   <input class="form-control" type="text" name="input" id="input" placeholder="Search" aria-label="Search">
+   <button class="btn blue-gradient btn-primary" type="submit">Search</button>
+</form>
+<div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                 title="Collapse">
           <i class="fa fa-minus"></i></button>
@@ -24,29 +29,25 @@ Client
       </div>
     </div>
     <div class="box-body">
-      @if(count($records))
+      @if(count($clientFilter))
         <div class="table-resposive">
           <table class="table table-border">
             <thead>
-            <tr>
-              <th class="text-center">id</th>
-              <th class="text-center">Name</th>
-              <th class="text-center">Email</th>
-              <th class="text-center">Phone</th>
-              <th class="text-center">Data Of BirthDate</th>
-              <th class="text-center">Blood Type</th>
-              <th class="text-center">last Donation Date</th>
-              <th class="text-center">City</th>
-              <th class="text-center">Active/Not Active</th>
-              <th class="text-center">Delete</th>
-
-
-
-
-            </tr>
+              <tr>
+                <th class="text-center">id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Phone</th>
+                <th class="text-center">Data Of BirthDate</th>
+                <th class="text-center">Blood Type</th>
+                <th class="text-center">last Donation Date</th>
+                <th class="text-center">City</th>
+                <th class="text-center">Active/Not Active</th>
+                <th class="text-center">Delete</th>
+              </tr>
           </thead>
           <tbody>
-            @foreach($records as $record)
+            @foreach($clientFilter as $record)
               <tr>
                 <td class="text-center">{{$record->id}}</td>
                 <td class="text-center">{{$record->name}}</td>

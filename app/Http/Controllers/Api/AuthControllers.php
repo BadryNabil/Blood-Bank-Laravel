@@ -101,7 +101,7 @@ public function reset_password(Request $request)
     if($user)
     {
       $code=rand(1111,9999);
-      $update=$user->update(['pin_code'=>$code]);
+      $update = $user->update(['pin_code'=>$code]);
       if($update)
       {
       //  smsMisr($request->phone,"Your Reset Code Is :".$code);
@@ -244,4 +244,3 @@ public function register_token(Request $request)
     return responseJson(1,'success',$notifications);
   }
 }
-

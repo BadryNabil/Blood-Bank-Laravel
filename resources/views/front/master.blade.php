@@ -13,11 +13,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" href="{{asset('front/css/swiper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/animate.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/style.css')}} " />
 
-    <title>About Us</title>
+    <title>Blood Bank</title>
 </head>
 
 <body>
@@ -29,11 +29,11 @@
                 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <i class="fas fa-phone-volume" style="border-right: 1px solid gray;"> +20 127 245 6884
+                            <i class="fas fa-phone-volume" style="border-right: 1px solid gray;"> {{$settings->phone}}
                                 &nbsp; &nbsp; </i>
                         </li>
                         <li class="nav-item">
-                            <i class="far fa-envelope" style="padding-left: 15px;"> InfoBloodBank@gmail.com</i>
+                            <i class="far fa-envelope" style="padding-left: 15px;"> {{$settings->google_link}}</i>
                         </li>
                     </ul>
                 </div>
@@ -64,23 +64,20 @@
     <!-- Navbar 2 Start -->
     <section id="Nav2">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <img src="imgs/logo.png" width="18%"></img>
+            <img src="{{asset('front/imgs/logo.png')}}" width="18%"></img>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link selected" href="{{url('/')}}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link selected" href="About-us.html">About Us</a>
+                        <a class="nav-link" href="About-us.html">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Articles</a>
+                        <a class="nav-link" href="{{url('postsAll')}}">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="requests.html">Donations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="who-we-are.html">Who We Are ?</a>
+                        <a class="nav-link" href="{{url('requests')}}">Donations</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact-us.html">Contact Us</a>
@@ -91,37 +88,9 @@
             </div>
         </nav>
     </section>
-    <!-- Navbar 2 End -->
-
-    <!-- Navigator Start -->
-    <section id="navigator">
-        <div class="container">
-            <div class="path">
-                <div class="path-main" style="color: darkred; display:inline-block;">Home</div>
-                <div class="path-directio" style="color: grey; display:inline-block;"> / About Us</div>
-            </div>
-
-        </div>
-    </section>
-    <!-- Navigator End -->
-
-    <!-- Who Start -->
-    <section id="who">
-        <div class="container">
-                <img src="imgs/logo.png" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere qui eius asperiores, animi adipisci quia eum beatae incidunt, laborum velit quibusdam debitis totam, et reiciendis ad? Commodi cupiditate velit vero?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum aspernatur est magnam, nesciunt culpa provident sit nobis molestias possimus? A optio dolores dolorum, odio nam est ducimus quis quisquam vero.
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae modi veritatis iste provident quis consectetur animi soluta, rerum dicta dolorem suscipit facere quas, porro, pariatur tempora consequuntur ad accusamus. Voluptatem?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere qui eius asperiores, animi adipisci quia eum beatae incidunt, laborum velit quibusdam debitis totam, et reiciendis ad? Commodi cupiditate velit vero?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum aspernatur est magnam, nesciunt culpa provident sit nobis molestias possimus? A optio dolores dolorum, odio nam est ducimus quis quisquam vero.
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae modi veritatis iste provident quis consectetur animi soluta, rerum dicta dolorem suscipit facere quas, porro, pariatur tempora consequuntur ad accusamus. Voluptatem?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere qui eius asperiores, animi adipisci quia eum beatae incidunt, laborum velit quibusdam debitis totam, et reiciendis ad? Commodi cupiditate velit vero?
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum aspernatur est magnam, nesciunt culpa provident sit nobis molestias possimus? A optio dolores dolorum, odio nam est ducimus quis quisquam vero.
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae modi veritatis iste provident quis consectetur animi soluta, rerum dicta dolorem suscipit facere quas, porro, pariatur tempora consequuntur ad accusamus. Voluptatem?
-                </p>
-        </div>
-    </section>
-    <!-- Who End -->
+    <!-- Content Start -->
+    @yield('content')
+    <!-- Content End -->
 
     <!-- Footer Start -->
     <section id="footer">
@@ -129,28 +98,25 @@
             <div class="row">
                 <div class="col-md-5">
                     <div class="foot-info">
-                        <img src="imgs/logo.png" alt="">
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos ut sit natus earum ea cum
-                            doloremque fugit. Sit non ex suscipit fugiat molestias, ipsa rerum tempore voluptates
-                            adipisci rem cum?</p>
+                        <img src="{{asset('front/imgs/logo.png')}}" alt="">
+                        <p>{{ $settings->about_app }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <ul class="menu">
-                        <a href="index.html">
+                        <a href="{{url('/')}}">
                             <li>Home</li>
                         </a>
                         <a href="About-us.html">
                             <li>About Us</li>
                         </a>
-                        <a href="#articles">
+                        <a href="{{url('postsAll')}}">
                             <li>Articles</li>
                         </a>
-                        <a href="requests.html">
+                        <a href="{{url('requests')}}">
                             <li>Donations</li>
                         </a>
-                        <a href="who-we-are.html">
-                            <li>Who We Are?</li>
+
                         </a>
                         <a href="contact-us.html">
                             <li>Contact Us</li>
@@ -162,8 +128,9 @@
                         <li>
                             <h5>Available On</h5>
                         </li>
-                        <li><img src="imgs/ios1.png" alt=""></li>
-                        <li><img src="imgs/google1.png" alt=""></li>
+                        <li> <a  href="{{$settings->app_store_link}}"><img src="{{asset('front/imgs/ios1.png')}}" alt=""></li>
+                        <li><img src="{{asset('front/imgs/google1.png')}}" alt=""></li>
+
                     </ul>
                 </div>
             </div>
@@ -176,9 +143,9 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script type="text/javascript" src="js/swiper.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="{{asset('front/js/swiper.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('front/js/wow.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('front/js/main.js')}}"></script>
 </body>
 
 </html>

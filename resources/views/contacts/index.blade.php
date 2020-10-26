@@ -59,7 +59,9 @@
                         </table>
                     </div>
                 @else
-                    <p class='text-center h3'>لا توجد رسائل !!</p>
+                <div class="alert alert-danger" role="alert">
+                    No Data
+                </div>
                 @endif
             </div>
 

@@ -34,6 +34,7 @@
                         <th class="text-center">Id</th>
                         <th class="text-center">Name</th>
                         <th class="text-center">Email</th>
+                        <th class="text-center">Phone</th>
                         <th class="text-center">Roles</th>
                         <th class="text-center">Edit</th>
                         <th class="text-center">Delete</th>
@@ -45,6 +46,7 @@
                 <td class="text-center">{{$user->id}}</td>
                 <td class="text-center">{{$user->name}}</td>
                 <td class="text-center">{{$user->email}}</td>
+                <td class="text-center">{{$user->phone}}</td>
                 <td class="text-center">
                    @foreach ($user->roles as $role)
                     <span class="label label-success">{{$role->display_name}}</span>

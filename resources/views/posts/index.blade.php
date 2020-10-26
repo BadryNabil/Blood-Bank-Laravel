@@ -62,13 +62,6 @@ Post
                     'method' =>'delete'
                     ]) !!}
                   <button type="submit" class="btn btn-danger" ><i class="fa fa-trash"></i></button>
-
-                  <script>
-                  $.confirm({
-                      icon: 'glyphicon glyphicon-heart',
-                      title: 'glyphicon'
-                  });
-                </script>
                   {!!Form::close() !!}
                 </td>
               </tr>

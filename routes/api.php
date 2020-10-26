@@ -33,7 +33,6 @@ Route::group(['prefix'=>'v1' ,'namespace'=>'Api'],function(){
   Route::post('new_password','AuthControllers@new_password');
 
 /***********************middleware*********************/
-//Route::group(['middleware'=>['auth','auto-check-permission']],function(){
 Route::group(['middleware'=>'auth:api'],function(){
 
   Route::get('posts','MainControllers@posts');

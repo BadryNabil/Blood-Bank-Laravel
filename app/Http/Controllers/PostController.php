@@ -63,9 +63,9 @@ class PostController extends Controller
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $name = time().''.rand(11111,99999).'.'.$extension; // renameing image
             $image->move($destinationPath, $name); // uploading file to given
-            $post->image = 'uploads/posts/thumbnails/'.$name;
+            $post->image = 'uploads/posts/images/'.$name;
             $post->save();
-            }
+          }
 
         flash()->success('success');
         return redirect(route('posts.index'));

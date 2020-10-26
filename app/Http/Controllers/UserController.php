@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -12,6 +14,37 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+  
+     public function resetPassword()
+     {
+       return view('users.reset-password');
+     }
+
+     public function resetPasswordSave(Request $request)
+     {
+       $this->validate($request, [
+            //'phone'           => 'required',
+            'old-password'    => 'required',
+            'password'        => 'required|confirmed',
+
+        ]);
+
+        $user = Auth::user();
+
+
+        if (Hash::check($request->input('old-password') ,$user->password)) {
+          $user->password = bcrypt($request->input('password'));
+          $user->save();
+        flash()->success('Password Edited');
+            return view('users.reset-password');
+        }else{
+            flash()->error('Password Not Correct');
+            return view('users.reset-password');
+        }
+      }
+
+
     public function index()
     {
 
@@ -89,6 +122,7 @@ class UserController extends Controller
            'roles_list'  => 'required'
        ]);
         $record = User::findOrFail($id);
+        $request->merge(['password'=>bcrypt($request->password)]);
         $record->update($request->all());
         $record->roles()->sync($request->roles_list);
         flash()->success("Edited");

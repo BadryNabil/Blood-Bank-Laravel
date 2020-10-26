@@ -15,6 +15,13 @@
     <div class="box-header with-border">
       <h3 class="box-title">List Of Donations</h3>
 
+      <form class="form-inline mr-auto" action="search" method="POST">
+        @csrf
+         <input class="form-control" type="text" name="input" id="input" placeholder="Search" aria-label="Search">
+         <button class="btn blue-gradient btn-primary" type="submit">Search</button>
+      </form>
+        </div>
+
       <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                 title="Collapse">
@@ -45,8 +52,8 @@
           <tbody>
             @foreach ($records as $record )
               <tr>
-                
-          
+
+
                 <td class="text-center">{{$loop->iteration}}</td>
                 <td class="text-center">{{$record->patient_name}}</td>
                 <td class="text-center">{{$record->patient_age}}</td>
@@ -55,8 +62,8 @@
                 <td class="text-center">{{$record->hospital_address}}</td>
                 <td class="text-center">{{$record->phone}}</td>
                 <td class="text-center">{{optional($record->city)->name}}</td>
-                <td class="text-center">{{$record->blood_type}}</td>
-            
+                <td class="text-center">{{optional($record->blood_type)->name}}</td>
+
                 <td class="text-center">
                   {!!Form::open([
                     'action' => ['DonationController@destroy',$record->id],

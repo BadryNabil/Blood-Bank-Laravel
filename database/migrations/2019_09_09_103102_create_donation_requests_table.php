@@ -10,7 +10,7 @@ class CreateDonationRequestsTable extends Migration {
 		Schema::create('donation_requests', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('patient_name');
-			$table->enum('blood_type',array('A+','A-','B+','B-','o+','o-','AB+','AB-'));
+			$table->integer('blood_type_id');
 		  $table->integer('city_id')->unsigned();
 			$table->integer('phone');
 			$table->integer('patient_age');

@@ -82,7 +82,7 @@ class MainControllers extends Controller
         'patient_name'       =>'required',
         'patient_age'        =>'required:digits',
         'phone'              =>'required|digits:11',
-        'blood_type'         =>'required',
+        'blood_type_id'         =>'required',
         'city_id'            =>'required|exists:cities,id',
         'hospital_address'   =>'required',
         'bags_num'           =>'required',
@@ -94,9 +94,9 @@ class MainControllers extends Controller
       $donationRequest=$request->user()->requests()->Create($request->all());
      $clientsIds=$donationRequest->city->governorate->clients()
       ->whereHas('bloodtypes',function($q) use ($request , $donationRequest){
-      $q->where('blood_types.id',$donationRequest->blood_type);
+      $q->where('blood_types.id',$donationRequest->blood_type_id);
       })->pluck('clients.id')->toArray();
-       //dd($clientsIds);
+      // dd($clientsIds);
 
       if($clientsIds)
       {
@@ -105,12 +105,12 @@ class MainControllers extends Controller
           'content'  =>$donationRequest->blood_type.'محتاج متبرع لفصيله',
 
         ]);
-
+       //dd($notification);
          //attach client to this notifications
         $notification->clients()->attach($clientsIds);
         $tokens=Token::WhereIn('client_id',$clientsIds)->where('token','!=','null')
         ->pluck('token')->toArray();
-
+     //dd($tokens);
         if(count($tokens)){
         $title  = $notification->title;
         $content= $notification->content;
@@ -120,7 +120,7 @@ class MainControllers extends Controller
 
           $send = notifyByFirebase($title,$content,$tokens,$data);
           info("firebase result:" . $send);
-          dd($send);
+          //dd($send);
         }
   }
 

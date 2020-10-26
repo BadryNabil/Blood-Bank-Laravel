@@ -16,6 +16,13 @@ $roles = $role->pluck('display_name', 'id')->toArray();
     {!! Form::text('email',null,[
     'class' => 'form-control'
  ]) !!}
+
+ <div class="form-group">
+     <label for="phone">Phone</label>
+     {!! Form::text('phone',null,[
+     'class' => 'form-control'
+  ]) !!}
+
 </div>
 <div class="form-group">
     <label for="password">Password</label>

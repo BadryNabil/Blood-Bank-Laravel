@@ -11,9 +11,9 @@ class DonationRequest extends Model
     public $timestamps = false;
     protected $fillable = array('patient_name', 'hospital_name', 'phone', 'patient_age', 'bags_num',
      'hospital_address', 'notes', 'latitude', 'longitude',
-      'city_id','blood_type');
+      'city_id','blood_type_id');
 
-    public function donation_blood_type()
+    public function blood_type()
     {
         return $this->belongsTo('App\BloodType');
     }

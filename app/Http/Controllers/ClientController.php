@@ -12,12 +12,30 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $records=Client::paginate(10);
-        return view('clients.index',compact('records'));
+        $clientFilter=Client::paginate(10);
+        return view('clients.index',compact('clientFilter'));
     }
+    public function search(Request $request)
+    {
+      $this->validate($request,[
+       'input' =>'required'
+      ]);
+      $input = $request->input;
+      $clientFilter = Client::where('name' , 'like' , '%' . $input . '%')
+                   ->orWhere('email' , 'like' ,'%' . $input . '%')
+                   ->orWhereHas('city',function ($city) use($input){
+                        $city->where('name','like','%'.$input.'%');
+                    })->get();
+      if ($clientFilter)
+      {
+        return view('clients.index',compact('clientFilter'));
+      }
 
+
+    }
     /**
      * Show the form for creating a new resource.
      *

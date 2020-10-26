@@ -119,9 +119,11 @@
         <li><a href="{{url(route('clients.index'))}}"><i class="fa fa-users"></i> <span>Clients</span></a></li>
         <li><a href="{{url(route('donations.index'))}}"><i class="fa fa-plus-square"></i>Donation Requests </a></li>
         <li><a href="{{url(route('contacts.index'))}}"><i class="fa fa-envelope"></i> <span>Contact</span></a></li>
-        <li><a href="{{url(route('roles.index'))}}"><i class="fa fa-users"></i> <span>Users Roles</span></a></li>
+        <li><a href="{{url(route('roles.index'))}}"><i class="fa fa-lock"></i> <span>Roles</span></a></li>
         <li><a href="{{url(route('users.index'))}}"><i class="fa fa-users"></i> <span>Users</span></a></li>
         <li><a href="{{url(route('settings.index'))}}"><i class="fa fa-cog"></i> <span>Settings</span></a></li>
+        <li><a href="{{url('change-password')}}"><i class="fa fa-edit"></i> <span>Password</span></a></li>
+
 
       </ul>
     </section>
@@ -138,7 +140,7 @@
         <small>@yield('small-title')</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{url('/home')}}"<i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{url('/home')}}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Blank page</li>
       </ol>
     </section>

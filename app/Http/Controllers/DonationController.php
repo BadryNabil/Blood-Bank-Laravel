@@ -18,6 +18,8 @@ class DonationController extends Controller
      return view('donations.index',compact('records'));
     }
 
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,7 +27,7 @@ class DonationController extends Controller
      */
     public function create()
     {
-      
+
     }
 
     /**
@@ -36,7 +38,7 @@ class DonationController extends Controller
      */
     public function store(Request $request)
     {
-     
+
     }
 
     /**
@@ -58,7 +60,7 @@ class DonationController extends Controller
      */
     public function edit($id)
     {
-    
+
     }
 
     /**
@@ -70,7 +72,7 @@ class DonationController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
+
     }
 
     /**

@@ -7,7 +7,7 @@ class CreateClientPostTable extends Migration {
 
 	public function up()
 	{
-		Schema::create('ClientPost', function(Blueprint $table) {
+		Schema::create('ClientProduct', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('post_id')->unsigned();
